@@ -7,6 +7,9 @@ def memorize_func_dec(func):
     def wrapper(*args):
         if not args in mem:
             mem[args] = func(*args)
+            # print('mem =', mem)
+        # else:
+        #    print('Работаем из памяти без вычисления.')
         return mem[args]
 
     return wrapper
@@ -20,6 +23,8 @@ def compute_exp(n, p):
 
 def main():
     nn = [2**_ for _ in range(10)]
+    nn.append(10000)
+    print('Экспонента =', math.exp(1))
     p = 1
     for n in nn:
         print(f'{n}: {compute_exp(n, p):.5f} Δ = {(compute_exp(n, p) - math.exp(1))/math.exp(1)*100:.3f} %')
